@@ -23,7 +23,7 @@
           <a class="navbar-brand" href="#">Best Cars</a>
           
           <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
@@ -60,7 +60,44 @@
         </div>
       </nav>
     <!--Add a dealer table here -->
+        <div class="container-fluid" style="width : 80%; margin-top : 3%;">
+            <h1 style="color:white">List of Our Dealers across North America :</h1>
+            <br>
+            <div style="background-color:#E7E7E7; margin-bottom: 2%; padding: 10px; border-radius: 5px">
+            <table id="table" class="table table-sm table-dark table-striped text-center" data-pagination="true" data-filter-control="true">
 
+                <thead class="thead-light">
+
+                    <th data-field="id" data-sortable="true" >Dealer ID</th>
+                    <th data-field="dealer_name" data-sortable="true" >Dealer Name</th>
+                    <!-- <th data-field="address" data-sortable="true" >Address</th> -->
+                    <th data-field="city" data-sortable="true" >City</th>
+                    <th data-field="state" data-filter-control="select">State</th>
+                    <!-- <th data-field="zip" data-sortable="true" >Zip Code</th> -->
+                    
+                </thead>
+
+                <tbody">
+
+                    {% for dealer in dealership_details %}
+                    <tr> 
+
+                        <td>{{dealer.id}}</td> 
+                        <td><a href="{% url 'djangoapp:dealer_details' dealer.id %}" style="color:white">{{dealer.full_name}}</a></td> 
+                        <!-- <td>{{dealer.address}}</td>  -->
+                        <td>{{dealer.city}}</td> 
+                        <td>{{dealer.st}}</td> 
+                        <!-- <td>{{dealer.zip}}</td>  -->
+
+                    </tr>
+                    {% endfor %} 
+
+                </tbody>
+
+            </table>
+            </div>
+
+        </div>
     </body>
 
 </html>
